@@ -23,6 +23,7 @@ public class WordFrequencyGame {
                     inputList.add(input);
                 }
 
+
                 //get the map for the next step of sizing the same word
                 Map<String, List<Input>> map = getListMap(inputList);
                 List<Input> list = new ArrayList<>();
