@@ -27,12 +27,10 @@ public class WordFrequencyGame {
                 return joiner.toString();
             } catch (Exception e) {
 
-
                 return "Calculate Error";
             }
         }
     }
-
 
     private Map<String, List<Input>> getListMap(List<Input> inputList) {
         Map<String, List<Input>> map = new HashMap<>();
@@ -64,8 +62,8 @@ public class WordFrequencyGame {
             Input input = new Input(entry.getKey(), entry.getValue().size());
             list.add(input);
         }
-        frequncies = list;
-        return frequncies;
+
+        return list;
     }
 
 }
