@@ -48,22 +48,22 @@ public class WordFrequencyGame {
         return map;
     }
     private List<Input> countFrequencies(String[] words) {
-        List<Input> frequncies = new ArrayList<>();
+        List<Input> inputList = new ArrayList<>();
         for (String s : words) {
             Input input = new Input(s, 1);
-            frequncies.add(input);
+            inputList.add(input);
         }
 
         //get the map for the next step of sizing the same word
-        Map<String, List<Input>> map = getListMap(frequncies);
+        Map<String, List<Input>> map = getListMap(inputList);
 
-        List<Input> list = new ArrayList<>();
+        List<Input> frequencies = new ArrayList<>();
         for (Map.Entry<String, List<Input>> entry : map.entrySet()) {
             Input input = new Input(entry.getKey(), entry.getValue().size());
-            list.add(input);
+            frequencies.add(input);
         }
 
-        return list;
+        return frequencies;
     }
 
 }
