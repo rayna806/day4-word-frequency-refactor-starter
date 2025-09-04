@@ -16,7 +16,7 @@ public class WordFrequencyGame {
             try {
                 //split the input string with 1 to n pieces of spaces
                 List<Input> inputList = countFrequencies(words);
-                inputList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+                inputList.sort((w1, w2) -> w2.wordCount() - w1.wordCount());
                 return composeOutput(inputList);
             } catch (Exception e) {
                 return "Calculate Error";
@@ -27,7 +27,7 @@ public class WordFrequencyGame {
     private String composeOutput(List<Input> inputList) {
         StringJoiner joiner = new StringJoiner("\n");
         for (Input w : inputList) {
-            String s = w.getValue() + " " + w.getWordCount();
+            String s = w.value() + " " + w.wordCount();
             joiner.add(s);
         }
         return joiner.toString();
