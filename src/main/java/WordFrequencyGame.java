@@ -47,7 +47,6 @@ public class WordFrequencyGame {
             }
         }
 
-
         return map;
     }
     private List<Input> countFrequencies(String[] words) {
