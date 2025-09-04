@@ -34,34 +34,14 @@ public class WordFrequencyGame {
     }
 
     private List<Input> countFrequencies(String[] words) {
-        Map<String, List<String>> group = groupSameWords(words);
-
+        Map<String, Integer> freqMap = new HashMap<>();
+        for (String word : words) {
+            freqMap.put(word, freqMap.getOrDefault(word, 0) + 1);
+        }
         List<Input> frequencies = new ArrayList<>();
-        for (Map.Entry<String, List<String>> entry : group.entrySet()) {
-            Input input = new Input(entry.getKey(), entry.getValue().size());
-            frequencies.add(input);
+        for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
+            frequencies.add(new Input(entry.getKey(), entry.getValue()));
         }
-
         return frequencies;
-    }
-
-    private static Map<String, List<String>> groupSameWords(String[] words) {
-        List<String> inputList = new ArrayList<>();
-        for (String s : words) {
-            inputList.add(s);
-        }
-        //get the map for the next step of sizing the same word
-        Map<String, List<String>> map = new HashMap<>();
-        for (String input : inputList) {
-//       map.computeIfAbsent(input.getValue(), k -> new ArrayList<>()).add(input);
-            if (!map.containsKey(input)) {
-                ArrayList arr = new ArrayList<>();
-                arr.add(input);
-                map.put(input, arr);
-            } else {
-                map.get(input).add(input);
-            }
-        }
-        return map;
     }
 }
