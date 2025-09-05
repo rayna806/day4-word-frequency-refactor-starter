@@ -26,12 +26,13 @@ public class WordFrequencyGame {
 
     private String composeOutput(List<Input> inputList) {
         StringJoiner joiner = new StringJoiner("\n");
-        for (Input w : inputList) {
-            String s = w.value() + " " + w.wordCount();
-            joiner.add(s);
+        for (Input word : inputList) {
+            String wordgroup = word.value() + " " + word.wordCount();//rename
+            joiner.add(wordgroup);
         }
         return joiner.toString();
     }
+
 
     private List<Input> countFrequencies(String[] words) {
         Map<String, Integer> freqMap = new HashMap<>();
@@ -39,6 +40,7 @@ public class WordFrequencyGame {
             freqMap.put(word, freqMap.getOrDefault(word, 0) + 1);
         }
         List<Input> frequencies = new ArrayList<>();
+        //refactor for loop
         for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
             frequencies.add(new Input(entry.getKey(), entry.getValue()));
         }
