@@ -1,8 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
 
@@ -36,14 +33,7 @@ public class WordFrequencyGame {
 
     private List<Input> countFrequencies(String[] words) {
         Map<String, Integer> freqMap = new HashMap<>();
-        for (String word : words) {
-            freqMap.put(word, freqMap.getOrDefault(word, 0) + 1);
-        }
-        List<Input> frequencies = new ArrayList<>();
-        //refactor for loop
-        for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
-            frequencies.add(new Input(entry.getKey(), entry.getValue()));
-        }
-        return frequencies;
+        Arrays.stream(words).forEach(word -> freqMap.put(word, freqMap.getOrDefault(word, 0) + 1));
+        return freqMap.entrySet().stream().map(entry -> new Input(entry.getKey(), entry.getValue())).collect(Collectors.toList());
     }
 }
